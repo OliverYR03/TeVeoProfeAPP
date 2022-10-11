@@ -1,0 +1,59 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
+class NavigationDrawerWidget extends StatelessWidget {
+  final padding = EdgeInsets.symmetric(horizontal: 20);
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+        child: Material(
+      color: Color.fromRGBO(50, 71, 205, 1),
+      child: ListView(
+        children: <Widget>[
+          const SizedBox(height: 48),
+          buildMenuItem(
+              text: 'Profesores',
+              icon: Icons.people,
+              onClicked: () => selectedItem(context, 0)),
+          buildMenuItem(
+              text: 'Asistencia',
+              icon: Icons.people,
+              onClicked: () => selectedItem(context, 1)),
+          buildMenuItem(
+              text: 'Justificacion',
+              icon: Icons.people,
+              onClicked: () => selectedItem(context, 2)),
+          buildMenuItem(
+              text: 'People',
+              icon: Icons.people,
+              onClicked: () => selectedItem(context, 3)),
+        ],
+      ),
+    ));
+  }
+}
+
+Widget buildMenuItem({
+  required String text,
+  required IconData icon,
+  VoidCallback? onClicked,
+}) {
+  final color = Colors.white;
+  final hoverColor = Colors.white70;
+
+  return ListTile(
+    leading: Icon(icon, color: color),
+    title: Text(text, style: TextStyle(color: color)),
+    hoverColor: hoverColor,
+    onTap: () {},
+  );
+}
+
+Widget selectedItem(BuildContext context, int index) {
+  switch (index) {
+    case 0:
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => "pagina aqui",
+      ));
+  }
+}
